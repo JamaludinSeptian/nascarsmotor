@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NASCARS Motor - Jasa Cat Mobil Premium & Body Repair</title>
+    <!-- Load Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Inter Font -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+    <!-- Font Awesome CDN for icons (as requested, replacing generic SVG/Flaticon proxy) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .clip-path-hero {
+            /* Membuat sudut miring di bagian bawah hero untuk estetika modern */
+            clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+        }
+        /* Custom style untuk efek hover pada card mobil */
+        .car-card-overlay {
+            opacity: 0;
+            transition: opacity 0.3s ease-in-out;
+        }
+        .car-card:hover .car-card-overlay {
+            opacity: 1;
+        }
+        /* Menghapus definisi warna kustom */
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+
+    <!-- Navbar (Sticky & Responsive) -->
+    <header class="sticky top-0 z-50 bg-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <!-- Logo & Brand Name (Menggunakan Font Awesome Icon dan warna amber) -->
+                <a href="#hero" class="text-3xl font-extrabold text-amber-600 tracking-wider flex items-center space-x-2">
+                    <img  class="hidden md:block" src="images/1.png" width="75px">
+                   <span style="color: #f35914;">NASCARS</span> <span class="text-gray-800 ">Motor</span>
+                </a>
+                
+                <!-- Desktop Navigation Links -->
+                <nav class="hidden md:flex space-x-8 items-center" id="desktop-menu">
+                    <a href="#pengenalan" class="text-gray-600 hover:text-amber-500 font-medium transition duration-150">Tentang</a>
+                    <a href="#proyek-selesai" class="text-gray-600 hover:text-amber-500 font-medium transition duration-150">Proyek</a>
+                    <a href="#keunggulan" class="text-gray-600 hover:text-amber-500 font-medium transition duration-150">Keunggulan</a>
+                    <a href="#maps" class="text-gray-600 hover:text-amber-500 font-medium transition duration-150">Lokasi</a>
+                    <a href="#whatsapp-form" class="inline-flex items-center justify-center px-5 py-2 border border-transparent text-sm font-semibold rounded-full shadow-lg text-white bg-amber-600 hover:bg-amber-700 transition duration-300 transform hover:scale-105">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM8 4a1 1 0 10-2 0V3a1 1 0 102 0v1z" /></svg>
+                        Konsultasi WA
+                    </a>
+                </nav>
+                
+                <!-- Mobile Menu Button (Hamburger) -->
+                <button id="mobile-menu-button" class="md:hidden text-gray-800 focus:outline-none" aria-label="Toggle menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-amber-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Mobile Menu (Hidden by default) -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-100 py-2">
+            <a href="#pengenalan" class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-amber-600">Tentang Kami</a>
+            <a href="#proyek-selesai" class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-amber-600">Proyek</a>
+            <a href="#keunggulan" class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-amber-600">Keunggulan & Bahan</a>
+            <a href="#maps" class="block px-4 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-amber-600">Lokasi Bengkel</a>
+            <a href="#whatsapp-form" class="block px-4 py-2 text-base font-medium text-white bg-amber-600 hover:bg-amber-700 mt-2">Pesan Sekarang</a>
+        </div>
+    </header>
+
+    <!-- Custom Message Box (instead of alert) -->
+    <div id="custom-message" class="fixed top-20 right-5 z-[9999] p-4 rounded-lg shadow-xl hidden transition-all duration-500 transform translate-x-full" role="alert">
+        <p id="message-text" class="font-medium"></p>
+    </div>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <!-- Konten utama ditampilkan secara default -->
+    <main id="main-content-wrapper">
+        <!-- 1. Hero Section -->
+        <section id="hero" class="relative bg-white-900 text-white clip-path-hero">
+            <!-- Background Image with Overlay -->
+            <div class="absolute inset-0">
+                <img src="images/hero.jpg"
+                     alt="Bengkel cat mobil modern"
+                     class="w-full h-full object-cover opacity-90">
+                <div class="absolute inset-0 bg-gray-900 opacity-60"></div>
+            </div>
+
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-36 flex flex-col md:flex-row items-center justify-between relative z-10">
+                <div class="md:w-1/2 mb-10 md:mb-0">
+                    <span class="text-amber-400 text-lg font-semibold uppercase tracking-widest">Jasa Cat Mobil Profesional</span>
+                    <h2 class="mt-4 text-5xl md:text-7xl font-extrabold leading-tight">
+                        Mengembalikan <span class="text-amber-500">Kilau</span> Mobil Anda
+                    </h2>
+                    <p class="mt-6 text-xl text-gray-300">
+                        NASCARS Motor menyediakan layanan body repair dan cat mobil berkualitas premium dengan garansi dan hasil sempurna.
+                    </p>
+                    <div class="mt-10 flex space-x-4">
+                        <a href="#whatsapp-form" class="px-8 py-3 text-lg text-sm font-semibold rounded-full shadow-xl text-gray-900 bg-amber-500 hover:bg-amber-600 transition duration-300 transform hover:scale-105">
+                            Konsultasi Gratis
+                        </a>
+                        <a href="#keunggulan" class="px-8 py-3 text-lg text-sm font-semibold rounded-full text-white border-2 border-amber-500 hover:bg-amber-500 hover:text-gray-900 transition duration-300">
+                            Lihat Keunggulan
+                        </a>
+                    </div>
+                </div>
+                <!-- Image placeholder / decorative element (Keep it for spacing) -->
+                <div class="md:w-1/3 flex justify-center opacity-90">
+                     <img src="images/2.png" width="50%">
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. Section Pengenalan Awal -->
+        <section id="pengenalan" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <span class="text-sm font-medium text-amber-600 uppercase">Siapa Kami?</span>
+                <h3 class="mt-2 text-4xl font-bold text-gray-900">Spesialis Cat Mobil & Body Repair Terbaik</h3>
+                <p class="mt-6 text-lg text-gray-600 max-w-3xl mx-auto">
+                    NASCARS Motor adalah bengkel cat mobil terpercaya yang berfokus pada kualitas pengerjaan, detail presisi, dan kepuasan pelanggan. Kami didukung oleh tim ahli berpengalaman dan fasilitas modern untuk memastikan mobil Anda kembali prima, tanpa cela.
+                </p>
+                <div class="mt-10 flex justify-center">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 w-full md:w-3/4">
+                        <div class="p-6 bg-gray-50 rounded-xl shadow-lg border border-amber-400">
+                            <i class="fas fa-certificate h-10 w-10 text-amber-500 mb-3 mx-auto"></i> 
+                            <p class="text-xl font-semibold text-gray-900">Garansi Pengerjaan</p>
+                            <p class="text-gray-500 text-sm mt-1">Kami menjamin hasil cat tahan lama.</p>
+                        </div>
+                        <div class="p-6 bg-gray-50 rounded-xl shadow-lg border border-amber-400">
+                            <i class="fas fa-tools h-10 w-10 text-amber-500 mb-3 mx-auto"></i> 
+                            <p class="text-xl font-semibold text-gray-900">Teknisi Tersertifikasi</p>
+                            <p class="text-gray-500 text-sm mt-1">Ditangani oleh ahli berpengalaman.</p>
+                        </div>
+                        <div class="p-6 bg-gray-50 rounded-xl shadow-lg border border-amber-400">
+                            <i class="fas fa-fill-drip h-10 w-10 text-amber-500 mb-3 mx-auto"></i>
+                            <p class="text-xl font-semibold text-gray-900">Material Terbaik</p>
+                            <p class="text-gray-500 text-sm mt-1">Menggunakan cat dan clear coat premium.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. Section Portfolio (Galeri Hasil Pengerjaan) -->
+        <section id="portfolio" class="pt-20 pb-10 bg-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="text-4xl font-bold text-gray-900">Galeri Proses Pengerjaan</h3>
+                <p class="mt-3 text-lg text-gray-600">Dokumentasi singkat tahapan kerja kami.</p>
+
+                <div class="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
+                    <!-- Portfolio Item 1: Before & After Panel Repair -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                        <figure>
+                            <img src="https://placehold.co/600x400/374151/FFFFFF?text=Kerusakan+Panel+Awal" alt="Mobil Sebelum Perbaikan" class="w-full h-48 object-cover object-center border-b-4 border-amber-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Kerusakan+Awal';" loading="lazy">
+                            <figcaption class="p-4">
+                                <h4 class="font-semibold text-xl text-gray-900">Perbaikan Panel Depan</h4>
+                                <p class="text-sm text-gray-500 mt-1">Mengatasi kerusakan panel bodi berat, kembali mulus.</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <!-- Portfolio Item 2: Full Body Respray -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                        <figure>
+                            <img src="https://placehold.co/600x400/FFAC1E/000000?text=Cat+Oven+Berlapis" alt="Mobil Setelah Cat Ulang" class="w-full h-48 object-cover object-center border-b-4 border-amber-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Hasil+Sempurna';" loading="lazy">
+                            <figcaption class="p-4">
+                                <h4 class="font-semibold text-xl text-gray-900">Aplikasi Clear Coat HS</h4>
+                                <p class="text-sm text-gray-500 mt-1">Hasil pengecatan berlapis dengan kilap mendalam (Deep Gloss).</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+
+                    <!-- Portfolio Item 3: Deep Scratch Removal -->
+                    <div class="bg-white rounded-xl shadow-xl overflow-hidden transform hover:scale-[1.02] transition duration-300">
+                        <figure>
+                            <img src="https://placehold.co/600x400/059669/ffffff?text=Warna+Sempurna" alt="Proses Koreksi Warna" class="w-full h-48 object-cover object-center border-b-4 border-amber-500" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Proses+Bengkel';" loading="lazy">
+                            <figcaption class="p-4">
+                                <h4 class="font-semibold text-xl text-gray-900">Pencocokan Warna Presisi</h4>
+                                <p class="text-sm text-gray-500 mt-1">Penyamaran kerusakan kecil dan pencampuran warna akurat.</p>
+                            </figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- 4. Section Proyek Selesai (Default 6 Cards) -->
+        <section id="proyek-selesai" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="text-4xl font-bold text-gray-900">Mobil yang Telah Kami Perbaiki</h3>
+                <p class="mt-3 text-lg text-gray-600 mb-12">Lihat 6 contoh mobil dengan tantangan kerusakan yang berhasil kami atasi.</p>
+
+                <!-- Tampilan 6 Cards Default (2 baris) -->
+                <div id="default-cards-display" class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                    
+                    <!-- Card 1: Toyota Avanza -->
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                        <img src="https://placehold.co/600x400/FACC15/000000?text=Avanza" alt="Toyota Avanza" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Avanza';" loading="lazy">
+                        <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                            <p class="text-xl font-bold">TOYOTA AVANZA</p>
+                            <p class="text-sm mt-2 text-center font-medium">Kerusakan: Pintu belakang penyok parah (Body Repair & Cat Panel).</p>
+                        </div>
+                        <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Toyota Avanza</div>
+                    </div>
+
+                    <!-- Card 2: Honda Jazz -->
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                        <img src="https://placehold.co/600x400/FFAC15/000000?text=Honda+Jazz" alt="Honda Jazz" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Jazz';" loading="lazy">
+                        <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                            <p class="text-xl font-bold">HONDA JAZZ</p>
+                            <p class="text-sm mt-2 text-center font-medium">Kerusakan: Baret dalam di bumper depan (Cat Sol & Poles).</p>
+                        </div>
+                        <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Honda Jazz</div>
+                    </div>
+
+                    <!-- Card 3: Mitsubishi Pajero -->
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                        <img src="https://placehold.co/600x400/FFAC15/000000?text=Pajero" alt="Mitsubishi Pajero" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Pajero';" loading="lazy">
+                        <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                            <p class="text-xl font-bold">MITSUBISHI PAJERO</p>
+                            <p class="text-sm mt-2 text-center font-medium">Kerusakan: Ganti warna full body ke Matte Black (Cat Total).</p>
+                        </div>
+                        <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Mitsubishi Pajero</div>
+                    </div>
+
+                    <!-- Card 4: Nissan Livina -->
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                        <img src="https://placehold.co/600x400/FFAC15/000000?text=Livina" alt="Nissan Livina" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Livina';" loading="lazy">
+                        <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                            <p class="text-xl font-bold">NISSAN LIVINA</p>
+                            <p class="text-sm mt-2 text-center font-medium">Kerusakan: Cat pudar di atap dan kap mesin (Cat Ulang Atas).</p>
+                        </div>
+                        <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Nissan Livina</div>
+                    </div>
+
+                    <!-- Card 5: Toyota Alphard -->
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                        <img src="https://placehold.co/600x400/FFAC15/000000?text=Alphard" alt="Toyota Alphard" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Alphard';" loading="lazy">
+                        <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                            <p class="text-xl font-bold">TOYOTA ALPHARD</p>
+                            <p class="text-sm mt-2 text-center font-medium">Kerusakan: Perbaikan penyok minor di samping bodi (PDR & Cat).</p>
+                        </div>
+                        <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Toyota Alphard</div>
+                    </div>
+
+                    <!-- Card 6: Suzuki Ertiga -->
+                    <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                        <img src="https://placehold.co/600x400/FFAC15/000000?text=Ertiga" alt="Suzuki Ertiga" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Ertiga';" loading="lazy">
+                        <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                            <p class="text-xl font-bold">SUZUKI ERTIGA</p>
+                            <p class="text-sm mt-2 text-center font-medium">Kerusakan: Cat bodi belang setelah kecelakaan kecil (Blending Warna).</p>
+                        </div>
+                        <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Suzuki Ertiga</div>
+                    </div>
+                </div>
+
+                <!-- Tombol Lihat Selengkapnya/Kembali -->
+                <div class="mt-12">
+                    <button id="view-more-button" onclick="toggleFullView()" 
+                       class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full shadow-lg text-white bg-amber-600 hover:bg-amber-700 transition duration-300 transform hover:scale-105 border-2 border-amber-600 hover:border-amber-700">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 0l-3-3m3 3l3-3m-6 3h6" />
+                        </svg>
+                        Lihat Selengkapnya
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Section Keunggulan dan Bahan -->
+        <section id="keunggulan" class="py-20 bg-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h3 class="text-4xl font-bold text-gray-900">Mengapa Memilih NASCARS Motor?</h3>
+                </div>
+
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                    <!-- Keunggulan (Advantages) -->
+                    <div>
+                        <h4 class="text-3xl font-bold text-amber-600 mb-6">Keunggulan Layanan</h4>
+                        <ul class="space-y-6">
+                            <li class="flex items-start space-x-4 p-4 rounded-xl bg-gray-50 border-l-4 border-amber-600 shadow-md">
+                                <i class="fas fa-hammer h-6 w-6 text-amber-500 mt-1 flex-shrink-0"></i> 
+                                <div>
+                                    <p class="font-semibold text-lg text-gray-900">Sistem Pengecatan Oven</p>
+                                    <p class="text-gray-600">Memastikan debu minimal dan pengeringan sempurna, menghasilkan tekstur cat yang rata dan halus seperti baru.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-4 p-4 rounded-xl bg-gray-50 border-l-4 border-amber-600 shadow-md">
+                                <i class="fas fa-palette h-6 w-6 text-amber-500 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-semibold text-lg text-gray-900">Pencampuran Warna Akurat</p>
+                                    <p class="text-gray-600">Menggunakan teknologi komputerisasi untuk mencocokkan warna cat lama mobil Anda dengan tingkat akurasi tertinggi.</p>
+                                </div>
+                            </li>
+                            <li class="flex items-start space-x-4 p-4 rounded-xl bg-gray-50 border-l-4 border-amber-600 shadow-md">
+                                <i class="fas fa-medal h-6 w-6 text-amber-500 mt-1 flex-shrink-0"></i>
+                                <div>
+                                    <p class="font-semibold text-lg text-gray-900">Garansi Penuh 1 Tahun</p>
+                                    <p class="text-gray-600">Kami memberikan jaminan resmi untuk setiap pekerjaan cat dan body repair yang kami lakukan.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+
+                    <!-- Bahan (Materials) -->
+                    <div>
+                        <h4 class="text-3xl font-bold text-amber-600 mb-6">Material yang Kami Gunakan</h4>
+                        <div class="space-y-4">
+                            <div class="p-4 border-2 border-gray-200 rounded-xl shadow-sm">
+                                <p class="text-xl font-semibold text-gray-900">Cat Berbasis Polyurethane (PU)</p>
+                                <p class="text-gray-600">Memberikan ketahanan superior terhadap cuaca, goresan, dan paparan sinar UV. Pilihan cat premium untuk hasil yang awet.</p>
+                            </div>
+                            <div class="p-4 border-2 border-gray-200 rounded-xl shadow-sm">
+                                <p class="text-xl font-semibold text-gray-900">Clear Coat High Solid (HS)</p>
+                                <p class="text-gray-600">Lapisan akhir yang tebal dan bening, memberikan efek *deep wet look* (kilap mendalam) yang memukau dan perlindungan maksimal.</p>
+                            </div>
+                            <div class="p-4 border-2 border-gray-200 rounded-xl shadow-sm">
+                                <p class="text-xl font-semibold text-gray-900">Filler & Primer Berkualitas</p>
+                            <p class="text-gray-600">Persiapan permukaan yang detail adalah kunci. Kami menggunakan filler terbaik untuk meratakan permukaan bodi sebelum pengecatan.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Section WhatsApp Form (Booking/Consultation) -->
+        <section id="whatsapp-form" class="py-20 bg-gray-900">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex flex-col lg:flex-row rounded-3xl overflow-hidden shadow-2xl">
+                    <!-- Left: Text/Header -->
+                    <div class="lg:w-1/2 p-10 md:p-16 bg-amber-500 text-gray-900 flex flex-col justify-center">
+                        <h4 class="text-4xl font-extrabold leading-tight">Mulai Konsultasi Anda Sekarang</h4>
+                        <p class="mt-4 text-lg">Hubungi kami melalui WhatsApp. Isi formulir di samping untuk mendapatkan *fast response* dari tim kami.</p>
+                        <div class="mt-6 flex items-center space-x-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" viewBox="0 0 20 20" fill="currentColor"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm-1-8a1 1 0 102 0V7a1 1 0 10-2 0v3zM8 4a1 1 0 10-2 0V3a1 1 0 102 0v1z" clip-rule="evenodd" /></svg>
+                            <span class="font-medium">Nomor Layanan:  081299887792</span>
+                        </div>
+                    </div>
+
+                    <!-- Right: Form -->
+                    <div class="lg:w-1/2 p-10 md:p-12 bg-white">
+                        <form id="whatsappForm" onsubmit="event.preventDefault(); sendWhatsApp();" class="space-y-6">
+                            <div>
+                                <label for="name" class="block text-sm font-medium text-gray-700">Nama Lengkap</label>
+                                <input type="text" id="name" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-amber-500 focus:border-amber-500" placeholder="Contoh: Budi Santoso">
+                            </div>
+                            <div>
+                                <label for="service" class="block text-sm font-medium text-gray-700">Jenis Jasa yang Diinginkan</label>
+                                <select id="service" required class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-amber-500 focus:border-amber-500">
+                                    <option value="">-- Pilih Jenis Jasa --</option>
+                                    <option value="Cat Panel/Sol (Perbaikan kecil)">Cat Panel/Sol (Perbaikan kecil)</option>
+                                    <option value="Cat Ulang Full Body (Ganti Warna)">Cat Ulang Full Body (Ganti Warna)</option>
+                                    <option value="Cat Ulang Full Body (Warna Asli)">Cat Ulang Full Body (Warna Asli)</option>
+                                    <option value="Perbaikan Body & Cat (Tabrakan/Penyok)">Perbaikan Body & Cat (Tabrakan/Penyok)</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="notes" class="block text-sm font-medium text-gray-700">Catatan/Detail Mobil (Opsional)</label>
+                                <textarea id="notes" rows="3" class="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-lg shadow-sm focus:ring-amber-500 focus:border-amber-500" placeholder="Contoh: Mobil Toyota Avanza tahun 2020, penyok di pintu belakang."></textarea>
+                            </div>
+                            
+                            <button type="submit" class="w-full flex items-center justify-center py-3 px-4 border border-transparent rounded-lg shadow-lg text-lg font-semibold text-white bg-amber-600 hover:bg-amber-700 transition duration-300 transform hover:scale-[1.01]">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" viewBox="0 0 20 20" fill="currentColor"><path d="M10 2a8 8 0 100 16 8 8 0 000-16zM6.672 9.176l2.13 2.13a1 1 0 001.414 0l3.708-3.708a1 1 0 00-1.414-1.414L10 9.586 7.786 7.372a1 1 0 00-1.414 1.414z" /></svg>
+                                Kirim ke WhatsApp
+                            </button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 7. Section Maps -->
+        <section id="maps" class="py-20 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+                <h3 class="text-4xl font-bold text-gray-900 mb-8">Lokasi Bengkel Kami</h3>
+                <div class="rounded-xl overflow-hidden shadow-2xl border-4 border-amber-600">
+                    <!-- Iframe Google Maps yang disediakan user -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3965.955605865947!2d106.9608647!3d-6.269569000000001!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e698dbd8d259671%3A0xc297947a5c525aef!2sBengkel%20CAT%20Mobil%20NAS%20CARS%20Motor!5e0!3m2!1sid!2sid!4v1760638659430!5m2!1sid!2sid" 
+                            width="100%" 
+                            height="450" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                    </iframe>
+                </div>
+                <p class="mt-4 text-gray-600">Kunjungi lokasi kami langsung untuk konsultasi dan pemeriksaan kondisi mobil Anda.</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- FULL CARDS VIEW (Hidden by default) -->
+    <section id="full-cards-view" class="py-20 bg-gray-50 hidden min-h-[80vh]">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h3 class="text-4xl font-bold text-gray-900">Portofolio Lengkap Proyek Selesai (9 Mobil)</h3>
+            <p class="mt-3 text-lg text-gray-600 mb-12">Lihat semua mobil yang telah kami perbaiki dengan detail kerusakan.</p>
+
+            <!-- Tampilan 9 Cards Penuh (3 baris) -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Card 1: Toyota Avanza -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FACC15/000000?text=Avanza" alt="Toyota Avanza" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Avanza';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">TOYOTA AVANZA</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Pintu belakang penyok parah (Body Repair & Cat Panel).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Toyota Avanza</div>
+                </div>
+
+                <!-- Card 2: Honda Jazz -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=Honda+Jazz" alt="Honda Jazz" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Jazz';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">HONDA JAZZ</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Baret dalam di bumper depan (Cat Sol & Poles).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Honda Jazz</div>
+                </div>
+
+                <!-- Card 3: Mitsubishi Pajero -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=Pajero" alt="Mitsubishi Pajero" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Pajero';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">MITSUBISHI PAJERO</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Ganti warna full body ke Matte Black (Cat Total).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Mitsubishi Pajero</div>
+                </div>
+
+                <!-- Card 4: Nissan Livina -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=Livina" alt="Nissan Livina" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Livina';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">NISSAN LIVINA</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Cat pudar di atap dan kap mesin (Cat Ulang Atas).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Nissan Livina</div>
+                </div>
+
+                <!-- Card 5: Toyota Alphard -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=Alphard" alt="Toyota Alphard" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Alphard';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">TOYOTA ALPHARD</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Perbaikan penyok minor di samping bodi (PDR & Cat).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Toyota Alphard</div>
+                </div>
+
+                <!-- Card 6: Suzuki Ertiga -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=Ertiga" alt="Suzuki Ertiga" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Ertiga';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">SUZUKI ERTIGA</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Cat bodi belang setelah kecelakaan kecil (Blending Warna).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Suzuki Ertiga</div>
+                </div>
+                
+                <!-- Card 7: BMW 3 Series -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=BMW" alt="BMW 3 Series" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=BMW';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">BMW 3 SERIES</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Restorasi cat penuh karena usia (Cat Total Premium).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">BMW 3 Series</div>
+                </div>
+
+                <!-- Card 8: Daihatsu Xenia -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=Xenia" alt="Daihatsu Xenia" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Xenia';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">DAIHATSU XENIA</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Perbaikan goresan keliling akibat vandalisme (Cat Panel + Sol).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Daihatsu Xenia</div>
+                </div>
+
+                <!-- Card 9: Toyota Yaris -->
+                <div class="group relative rounded-xl overflow-hidden shadow-lg car-card cursor-pointer">
+                    <img src="https://placehold.co/600x400/FFAC15/000000?text=Yaris" alt="Toyota Yaris" class="w-full h-64 sm:h-48 object-cover object-center transition duration-300 group-hover:scale-110" onerror="this.onerror=null;this.src='https://placehold.co/600x400/4B5563/FFFFFF?text=Yaris';" loading="lazy">
+                    <div class="absolute inset-0 bg-amber-600 bg-opacity-90 flex flex-col justify-center items-center text-white p-4 car-card-overlay">
+                        <p class="text-xl font-bold">TOYOTA YARIS</p>
+                        <p class="text-sm mt-2 text-center font-medium">Kerusakan: Bumper belakang pecah, perbaikan fiber dan cat (Body Repair).</p>
+                    </div>
+                    <div class="p-4 bg-white text-gray-900 text-lg font-semibold">Toyota Yaris</div>
+                </div>
+
+            </div>
+            <!-- Tombol Kembali di Tampilan Penuh -->
+            <div class="mt-12">
+                <button onclick="toggleFullView()" 
+                   class="inline-flex items-center justify-center px-8 py-3 text-lg font-semibold rounded-full shadow-lg text-white bg-amber-600 hover:bg-amber-700 transition duration-300 transform hover:scale-105 border-2 border-amber-600 hover:border-amber-700">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                    </svg>
+                    Kembali ke Tampilan Penuh
+                </button>
+            </div>
+        </div>
+    </section>
+    <!-- END FULL CARDS VIEW -->
+
+    <!-- 8. Footer Section -->
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-4 gap-8">
+            <!-- Col 1: Logo & Tagline -->
+            <div class="md:col-span-1">
+                <h4 class="text-3xl font-extrabold text-amber-500 tracking-wider">NASCARS Motor</h4>
+                <p class="mt-2 text-gray-400">Dedikasi kami adalah mengembalikan mobil Anda ke kondisi terbaiknya.</p>
+            </div>
+
+            <!-- Col 2: Quick Links -->
+            <div>
+                <h5 class="text-xl font-semibold mb-4 text-amber-500">Tautan Cepat</h5>
+                <ul class="space-y-2 text-gray-400">
+                    <li><a href="#pengenalan" class="hover:text-amber-400 transition duration-150">Tentang Kami</a></li>
+                    <li><a href="#proyek-selesai" class="hover:text-amber-400 transition duration-150">Proyek Selesai</a></li>
+                    <li><a href="#keunggulan" class="hover:text-amber-400 transition duration-150">Keunggulan & Bahan</a></li>
+                    <li><a href="#whatsapp-form" class="hover:text-amber-400 transition duration-150">Hubungi Kami</a></li>
+                </ul>
+            </div>
+
+            <!-- Col 3: Contact Info -->
+            <div>
+                <h5 class="text-xl font-semibold mb-4 text-amber-500">Kontak</h5>
+                <p class="text-gray-400">Jl. Cikunir Raya, Jakamulya, Kec. Bekasi Sel., Kota Bks, Jawa Barat 17146</p>
+                <p class="mt-2">Telepon/WA: <a href="tel:+6281299887792" class="text-amber-400 hover:underline">081299887792</a></p>
+                <p>Email: info@nascarsmotor.com (Contoh)</p>
+            </div>
+
+            <!-- Col 4: Social Media (Menggunakan Font Awesome) -->
+            <div>
+                <h5 class="text-xl font-semibold mb-4 text-amber-500">Ikuti Kami</h5>
+                <div class="flex space-x-4">
+                    <!-- Instagram -->
+                    <a href="https://instagram.com/nascarsmotor" target="_blank" class="text-gray-400 hover:text-amber-500 transition duration-150" aria-label="Instagram">
+                        <i class="fab fa-instagram text-2xl"></i>
+                    </a>
+                    <!-- TikTok -->
+                    <a href="https://tiktok.com/@nascarsmotor" target="_blank" class="text-gray-400 hover:text-amber-500 transition duration-150" aria-label="TikTok">
+                        <i class="fab fa-tiktok text-2xl"></i>
+                    </a>
+                    <!-- Facebook -->
+                    <a href="https://www.facebook.com/p/NAS-CARS-MOTOR-100078898778787/" target="_blank" class="text-gray-400 hover:text-amber-500 transition duration-150" aria-label="Facebook">
+                        <i class="fab fa-facebook-f text-2xl"></i>
+                    </a>
+                    <!-- YouTube -->
+                    <a href="https://www.youtube.com/channel/UCubcdn7CaEaAng2Wz6MA9tg" target="_blank" class="text-gray-400 hover:text-amber-500 transition duration-150" aria-label="YouTube">
+                        <i class="fab fa-youtube text-2xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="mt-10 pt-6 border-t border-gray-700 text-center text-gray-500">
+            &copy; 2024 NASCARS Motor. All rights reserved.
+        </div>
+    </footer>
+
+
+    <script>
+        // --- JavaScript Logic ---
+
+        // Function to show custom message instead of alert()
+        function showMessage(text, type = 'info') {
+            const msgBox = document.getElementById('custom-message');
+            const msgText = document.getElementById('message-text');
+
+            msgText.textContent = text;
+
+            // Apply styling based on type
+            if (type === 'error') {
+                msgBox.classList.remove('bg-green-500');
+                msgBox.classList.add('bg-red-500');
+            } else {
+                msgBox.classList.remove('bg-red-500');
+                msgBox.classList.add('bg-green-500');
+            }
+            
+            // Show message box with animation
+            msgBox.classList.remove('hidden', 'translate-x-full');
+            msgBox.classList.add('translate-x-0', 'text-white');
+
+            // Hide message box after 4 seconds
+            setTimeout(() => {
+                msgBox.classList.remove('translate-x-0');
+                msgBox.classList.add('translate-x-full');
+                setTimeout(() => {
+                    msgBox.classList.add('hidden');
+                }, 500); // Wait for transition to finish
+            }, 4000);
+        }
+
+        // Fungsionalitas untuk toggle tampilan 6 kartu vs. 9 kartu (Full Page)
+        function toggleFullView() {
+            const mainWrapper = document.getElementById('main-content-wrapper');
+            const fullCardsView = document.getElementById('full-cards-view');
+            const button = document.getElementById('view-more-button');
+            
+            // Cek status saat ini
+            const isMainVisible = !mainWrapper.classList.contains('hidden');
+
+            if (isMainVisible) {
+                // Dari Tampilan Penuh Landing Page ke Tampilan 9 Kartu
+                mainWrapper.classList.add('hidden');
+                fullCardsView.classList.remove('hidden');
+                
+                // Ganti teks tombol utama
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M11 17l-5-5m0 0l5-5m-5 5h12" />
+                    </svg>
+                    Kembali ke Tampilan Penuh
+                `;
+                
+                // Scroll ke atas
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            } else {
+                // Dari Tampilan 9 Kartu kembali ke Tampilan Penuh Landing Page
+                mainWrapper.classList.remove('hidden');
+                fullCardsView.classList.add('hidden');
+
+                // Kembalikan teks tombol utama
+                button.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 13l-3 3m0 0l-3-3m3 3V8m0 0l-3-3m3 3l3-3m-6 3h6" />
+                    </svg>
+                    Lihat Selengkapnya
+                `;
+                
+                // Scroll kembali ke bagian proyek
+                document.getElementById('proyek-selesai').scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+        
+        // Function to handle WhatsApp Form Submission (Image logic removed)
+        function sendWhatsApp() {
+            const name = document.getElementById('name').value;
+            const service = document.getElementById('service').value;
+            const notes = document.getElementById('notes').value;
+            
+            // The destination phone number, must be in international format (62...)
+            const phoneNumber = '6289637103742';
+
+            if (!name || !service) {
+                showMessage('⚠️ Mohon lengkapi kolom Nama dan Jenis Jasa.', 'error');
+                return;
+            }
+
+            // Construct the message with URL encoding (%0A for new line, * for bold)
+            const message = `Halo NASCARS Motor,Saya *${name}* ingin konsultasi mengenai jasa: *${service}*. Catatan Tambahan:%0A${notes || '(Tidak ada catatan tambahan)'}%0A%0AMohon info ketersediaan dan estimasi biayanya. Terima kasih.`;
+
+            const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
+            
+            // Open WhatsApp link in a new tab
+            window.open(waLink, '_blank');
+            
+            showMessage('Pesan Anda sudah siap dikirim ke WhatsApp!', 'info');
+        }
+
+        // Function for Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', () => {
+            const button = document.getElementById('mobile-menu-button');
+            const menu = document.getElementById('mobile-menu');
+
+            if (button && menu) {
+                button.addEventListener('click', () => {
+                    menu.classList.toggle('hidden');
+                    // Ganti ikon jika diperlukan
+                    const icon = button.querySelector('svg');
+                    if (menu.classList.contains('hidden')) {
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />';
+                    } else {
+                        icon.innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />';
+                    }
+                });
+
+                // Close menu on link click
+                menu.querySelectorAll('a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        menu.classList.add('hidden');
+                        document.getElementById('mobile-menu-button').querySelector('svg').innerHTML = '<path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16m-7 6h7" />';
+                    });
+                });
+            }
+        });
+
+        // Optional: Smooth scroll for anchors (Tailwind's scroll-smooth attribute handles most, but this is a fallback/enhancement)
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+    </script>
+</body>
+</html>
