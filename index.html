@@ -653,7 +653,13 @@
             }
 
             // Construct the message with URL encoding (%0A for new line, * for bold)
-            const message = `Halo NASCARS Motor,Saya *${name}* ingin konsultasi mengenai jasa: *${service}*. Catatan Tambahan:%0A${notes || '(Tidak ada catatan tambahan)'}%0A%0AMohon info ketersediaan dan estimasi biayanya. Terima kasih.`;
+            const message = 
+                `Halo *NASCARS Motor!*\n\nSaya ingin Konsultasi.\n\n` +
+                `*Data Pemesan:*\n` +
+                `*Nama:* ${name}\n` +
+                `*ingin konsultasi mengenai jasa*: ${service}\n\n` +
+                `*Catatan Tambahan:* \n${notes || '(Tidak ada catatan tambahan)'}\n\n` +
+                `Mohon info ketersediaan dan estimasi biayanya. Terima kasih.`;
 
             const waLink = `https://wa.me/${phoneNumber}?text=${encodeURIComponent(message)}`;
             
